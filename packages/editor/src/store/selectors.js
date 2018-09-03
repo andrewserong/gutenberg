@@ -348,6 +348,7 @@ export function isEditedPostSaveable( state ) {
 	//  See: https://github.com/WordPress/gutenberg/pull/4184
 
 	return (
+		isEditedPostDirty( state ) ||
 		!! getEditedPostAttribute( state, 'title' ) ||
 		!! getEditedPostAttribute( state, 'excerpt' ) ||
 		! isEditedPostEmpty( state )
