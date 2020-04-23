@@ -1,8 +1,64 @@
 $blocks-button__height: 56px;
 
-// Prefer the link selector instead of the regular button classname
-// to support the previous markup in addition to the new one.
-.wp-block-button__link {
+// Legacy markup styling, used for markup like:
+// <div class="wp-block-button"><a class="wp-block-button__link">Third button</a></div>
+
+.wp-block-button:not(.wp-block-button__link) {
+	color: $white;
+
+	&.aligncenter {
+		text-align: center;
+	}
+
+	&.alignright {
+		/*rtl:ignore*/
+		text-align: right;
+	}
+}
+
+.wp-block-button__link:not(.wp-block-button) {
+	background-color: $dark-gray-700;
+	border: none;
+	border-radius: $blocks-button__height / 2;
+	box-shadow: none;
+	color: inherit;
+	cursor: pointer;
+	display: inline-block;
+	font-size: $big-font-size;
+	margin: 0;
+	padding: 12px 24px;
+	text-align: center;
+	text-decoration: none;
+	overflow-wrap: break-word;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&:visited {
+		color: inherit;
+	}
+}
+
+.wp-block-button.is-style-squared .wp-block-button__link {
+	border-radius: 0;
+}
+.wp-block-button .no-border-radius.wp-block-button__link {
+	border-radius: 0 !important;
+}
+
+.wp-block-button.is-style-outline {
+	color: $dark-gray-700;
+
+	.wp-block-button__link {
+		background-color: transparent;
+		border: 2px solid;
+	}
+}
+
+// New markup stlying, used for markup like:
+// <a class="wp-block-button wp-block-button__link is-style-outline">A button</a>
+
+.wp-block-button.wp-block-button__link {
 	color: $white;
 	background-color: $dark-gray-700;
 	border: none;
@@ -34,22 +90,15 @@ $blocks-button__height: 56px;
 	}
 }
 
-// the first selector is required for old buttons markup
-.wp-block-button.is-style-squared,
 .wp-block-button__link.wp-block-button.is-style-squared {
 	border-radius: 0;
 }
 
-
-// the first selector is required for old buttons markup
-
-.wp-block-button.no-border-radius,
 .wp-block-button__link.wp-block-button.no-border-radius {
 	border-radius: 0 !important;
 }
 
-.wp-block-button.is-style-outline,
-.wp-block-button__link.is-style-outline {
+.wp-block-button.wp-block-button__link.is-style-outline {
 	color: $dark-gray-700;
 	background-color: transparent;
 	border: 2px solid;
