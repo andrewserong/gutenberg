@@ -47,7 +47,7 @@ export default function OverlayEdit( {
 		}
 	);
 	return (
-		<div { ...blockProps }>
+		<>
 			<BlockControls>
 				<ToolbarGroup>
 					<ToolbarButton
@@ -62,24 +62,27 @@ export default function OverlayEdit( {
 					</ToolbarButton>
 				</ToolbarGroup>
 			</BlockControls>
-			<div className="wp-block-overlay__button">
-				<RichText
-					tagName="div"
-					aria-label={ __( 'Overlay button' ) }
-					placeholder={ __( 'Add button text' ) }
-					value={ overlayButtonContent }
-					onChange={ ( value ) =>
-						setAttributes( { overlayButtonContent: value } )
-					}
-				/>
+			<div { ...blockProps }>
+				<div className="wp-block-overlay__button">
+					<RichText
+						tagName="div"
+						aria-label={ __( 'Overlay button' ) }
+						placeholder={ __( 'Add button text' ) }
+						value={ overlayButtonContent }
+						onChange={ ( value ) =>
+							setAttributes( { overlayButtonContent: value } )
+						}
+						withoutInteractiveFormatting
+					/>
+				</div>
+				<div { ...innerBlocksProps }>
+					<Button
+						className="wp-block-overlay__close-button"
+						icon={ closeIcon }
+						onClick={ () => setOverlayContext( 'button' ) }
+					/>
+				</div>
 			</div>
-			<div { ...innerBlocksProps }>
-				<Button
-					className="wp-block-overlay__close-button"
-					icon={ closeIcon }
-					onClick={ () => setOverlayContext( 'button' ) }
-				/>
-			</div>
-		</div>
+		</>
 	);
 }

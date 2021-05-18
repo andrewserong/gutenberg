@@ -12,7 +12,8 @@
 	"attributes": {
 		"overlayButtonContent": {
 			"type": "string",
-			"source": "html"
+			"source": "html",
+			"selector": ".wp-block-overlay__button > div"
 		}
 	},
 	"supports": {
