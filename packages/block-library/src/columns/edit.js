@@ -30,12 +30,14 @@ import {
 	createBlocksFromInnerBlocksTemplate,
 	store as blocksStore,
 } from '@wordpress/blocks';
+import { useEffect } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
 import {
 	hasExplicitPercentColumnWidths,
+	getEffectiveColumnWidth,
 	getMappedColumnWidths,
 	getRedistributedColumnWidths,
 	toWidthPrecision,
@@ -59,12 +61,17 @@ function ColumnsEditContainer( {
 	updateColumns,
 	clientId,
 } ) {
-	const { isStackedOnMobile, verticalAlignment } = attributes;
+	const {
+		gridTemplateColumns,
+		isStackedOnMobile,
+		verticalAlignment,
+	} = attributes;
 
-	const { count } = useSelect(
+	const { count, innerBlocks } = useSelect(
 		( select ) => {
 			return {
 				count: select( blockEditorStore ).getBlockCount( clientId ),
+				innerBlocks: select( blockEditorStore ).getBlocks( clientId ),
 			};
 		},
 		[ clientId ]
@@ -77,12 +84,32 @@ function ColumnsEditContainer( {
 
 	const blockProps = useBlockProps( {
 		className: classes,
+		style: {
+			gridTemplateColumns,
+		},
 	} );
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		orientation: 'horizontal',
 		renderAppender: false,
 	} );
+
+	useEffect( () => {
+		const percentageWidths = innerBlocks.map( ( block ) =>
+			getEffectiveColumnWidth( block, innerBlocks.length )
+		);
+		const fractions = percentageWidths.map(
+			( width ) => ( width / 100 ) * innerBlocks.length
+		);
+		let fractionsString = '';
+
+		fractions.forEach( ( fraction ) => {
+			fractionsString += fraction + 'fr ';
+		} );
+		setAttributes( {
+			gridTemplateColumns: fractionsString.trim(),
+		} );
+	}, [ count, innerBlocks ] );
 
 	return (
 		<>

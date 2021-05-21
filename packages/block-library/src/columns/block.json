@@ -6,6 +6,9 @@
 	"description": "Add a block that displays content in multiple columns, then add whatever content blocks you’d like.",
 	"textdomain": "default",
 	"attributes": {
+		"gridTemplateColumns": {
+			"type": "string"
+		},
 		"verticalAlignment": {
 			"type": "string"
 		},

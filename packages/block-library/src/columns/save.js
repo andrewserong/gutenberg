@@ -9,7 +9,11 @@ import classnames from 'classnames';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
-	const { isStackedOnMobile, verticalAlignment } = attributes;
+	const {
+		gridTemplateColumns,
+		isStackedOnMobile,
+		verticalAlignment,
+	} = attributes;
 
 	const className = classnames( {
 		[ `are-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
@@ -17,7 +21,12 @@ export default function save( { attributes } ) {
 	} );
 
 	return (
-		<div { ...useBlockProps.save( { className } ) }>
+		<div
+			{ ...useBlockProps.save( {
+				className,
+				style: { gridTemplateColumns },
+			} ) }
+		>
 			<InnerBlocks.Content />
 		</div>
 	);
