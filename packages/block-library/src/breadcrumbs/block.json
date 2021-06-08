@@ -15,6 +15,14 @@
 			"type": "string",
 			"default": "/"
 		},
+		"showCurrentPageTitle": {
+			"type": "boolean",
+			"default": false
+		},
+		"showLeadingSeparator": {
+			"type": "boolean",
+			"default": false
+		},
 		"textAlign": {
 			"type": "string"
 		}
@@ -32,5 +40,6 @@
 			"__experimentalFontFamily": true
 		}
 	},
+	"editorStyle": "wp-block-breadcrumbs-editor",
 	"style": "wp-block-breadcrumbs"
 }
