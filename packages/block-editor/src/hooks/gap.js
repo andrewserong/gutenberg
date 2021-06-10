@@ -104,7 +104,7 @@ export function GapEdit( props ) {
 			...style,
 			spacing: {
 				...style?.spacing,
-				gap: next,
+				gap: { row: next?.top, column: next?.left },
 			},
 		};
 
@@ -117,7 +117,7 @@ export function GapEdit( props ) {
 		const newStyle = {
 			...style,
 			visualizers: {
-				gap: next,
+				gap: { row: next?.top, column: next?.left },
 			},
 		};
 

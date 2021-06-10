@@ -243,7 +243,8 @@ class WP_Theme_JSON_Gutenberg {
 			'value' => array( 'typography', 'fontWeight' ),
 		),
 		'gap'              => array(
-			'value' => array( 'spacing', 'gap' ),
+			'value'      => array( 'spacing', 'gap' ),
+			'properties' => array( 'row', 'column' ),
 		),
 		'letter-spacing'   => array(
 			'value' => array( 'typography', 'letterSpacing' ),

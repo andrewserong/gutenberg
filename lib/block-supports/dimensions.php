@@ -87,10 +87,9 @@ function gutenberg_apply_spacing_support( $block_type, $block_attributes ) {
 	if ( $has_gap_support ) {
 		$gap_value = _wp_array_get( $block_attributes, array( 'style', 'spacing', 'gap' ), null );
 		if ( null !== $gap_value ) {
-			// TODO: Check the following assumption:
-			// Assume that the value will be a single value.
-			// But, maybe we want to support a different value for rows vs columns, and use a box control?
-			$styles[] = sprintf( 'gap: %s', $gap_value );
+			foreach ( $gap_value as $key => $value ) {
+				$styles[] = sprintf( '%s-gap: %s', $key, $value );
+			}
 		}
 	}
 

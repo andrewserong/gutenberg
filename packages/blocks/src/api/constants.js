@@ -69,6 +69,8 @@ export const __EXPERIMENTAL_STYLE_PROPERTY = {
 	gap: {
 		value: [ 'spacing', 'gap' ],
 		support: [ 'spacing', 'gap' ],
+		properties: [ 'row', 'column' ],
+		isReversedProperty: true,
 	},
 	lineHeight: {
 		value: [ 'typography', 'lineHeight' ],

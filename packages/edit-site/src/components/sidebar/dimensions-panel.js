@@ -74,6 +74,7 @@ export default function DimensionsPanel( { context, getStyle, setStyle } ) {
 
 	const setGapValues = ( newGapValues ) => {
 		const gap = filterValuesBySides( newGapValues, gapSides );
+		// TODO: This is currently broken, it'll need to convert the sides to `row` and `column` values.
 		setStyle( name, 'gap', gap );
 	};
 	const resetGapValue = () => setGapValues( {} );
