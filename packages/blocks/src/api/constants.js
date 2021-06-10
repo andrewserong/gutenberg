@@ -66,6 +66,10 @@ export const __EXPERIMENTAL_STYLE_PROPERTY = {
 		value: [ 'typography', 'fontWeight' ],
 		support: [ '__experimentalFontWeight' ],
 	},
+	gap: {
+		value: [ 'spacing', 'gap' ],
+		support: [ 'spacing', 'gap' ],
+	},
 	lineHeight: {
 		value: [ 'typography', 'lineHeight' ],
 		support: [ 'lineHeight' ],

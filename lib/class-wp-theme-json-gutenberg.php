@@ -55,6 +55,7 @@ class WP_Theme_JSON_Gutenberg {
 			'text'       => null,
 		),
 		'spacing'    => array(
+			'gap'     => null,
 			'margin'  => array(
 				'top'    => null,
 				'right'  => null,
@@ -98,6 +99,7 @@ class WP_Theme_JSON_Gutenberg {
 		'custom'     => null,
 		'layout'     => null,
 		'spacing'    => array(
+			'customGap'     => null,
 			'customMargin'  => null,
 			'customPadding' => null,
 			'units'         => null,
@@ -239,6 +241,9 @@ class WP_Theme_JSON_Gutenberg {
 		),
 		'font-weight'      => array(
 			'value' => array( 'typography', 'fontWeight' ),
+		),
+		'gap'              => array(
+			'value' => array( 'spacing', 'gap' ),
 		),
 		'letter-spacing'   => array(
 			'value' => array( 'typography', 'letterSpacing' ),
